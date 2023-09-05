@@ -168,7 +168,8 @@ async function signUpForm() {
         await saveContactsToStorage();
         resetInputField(nameInput, emailInput, password1, password2);
         show();
-        setTimeout(() => { renderLogIn() }, 2000)
+        setTimeout(() => { renderLogIn() }, 2000);
+        setTimeout(() => { getContactsFromStorage(); }, 500)
     }
 }
 

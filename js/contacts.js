@@ -453,6 +453,9 @@ function createNewContact() {
     let nameArray = nameInput.split(' ');
     let firstName = nameArray[0];
     let lastName = nameArray[1];
+    if (lastName === undefined) {
+        lastName = "";
+    }
     let emailInput = document.getElementById('add_contact_email').value;
     let phoneInput = document.getElementById('add_contact_phone').value;
     let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
@@ -481,8 +484,8 @@ function createNewContact() {
         scrollToNewContact('contacts_list', `contact_${theNewId}`);
         setTimeout(() => {
             target.click();
-        }, "550");
-    }, "550");
+        }, 250);
+    }, 250);
 }
 
 function sortContactsAlphabetically(contacts) {
@@ -606,6 +609,9 @@ function editContact(x) {
     let nameArray = nameInput.split(' ');
     let newFirstName = nameArray[0];
     let newLastName = nameArray[1];
+    if (newLastName === undefined) {
+        newLastName = "";
+    }
     let newEmail = document.getElementById('edit_email').value;
     let newPhone = document.getElementById('edit_phone').value;
     let element = Contacts[x];
@@ -620,8 +626,6 @@ function editContact(x) {
     renderContactsList();
     document.getElementById('floating_contact').innerHTML = "";
     showContactDetails(x)
- 
-
 }
 
 // function saveContactsToStorage(){
