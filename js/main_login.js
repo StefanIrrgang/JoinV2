@@ -41,7 +41,7 @@ function loadcurrentUser() {
     let storedCurrentUser = localStorage.getItem('currentUser');
     if (storedCurrentUser !== null) {
         currentUser = parseInt(storedCurrentUser);
-        console.log(currentUser);
+        // console.log(currentUser);
     }
 }
 

@@ -79,7 +79,7 @@ let Contacts = [
     //     "name": "Tatjana Wolf",
     //     "password": "1234",
     // }
-]
+];
 
 
 // saveContactsToStorage();

@@ -135,7 +135,7 @@ function sortCardsPrioHigh(){
     filteredPrioHigh.forEach(function (role) {
         role = role.replace('-','');
     });
-    console.log(filteredPrioHigh);
+    // console.log(filteredPrioHigh);
     let upComingDeadline = document.getElementById('upcomingDeadline');
     let upComingDeadlineTitle = document.getElementById('upcomingDeadlineTitle');
     if(upComingDeadline && upComingDeadlineTitle){
