@@ -1,4 +1,4 @@
-let currentuser = "Jon Doe";
+// let currentuser = "Jon Doe";
 
 //Initialen des eingeloggten Nutzers
 async function includeTemplates(a) {

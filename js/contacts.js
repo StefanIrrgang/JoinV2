@@ -363,11 +363,14 @@ function closeEditOverlay() {
 }
 
 function deleteContact(x) {
-
+    if (currentUser == x) {
+        alert('Not possible to delete yourself from contacts list!');
+    } else {
     Contacts.splice(x, 1);
     document.getElementById('floating_contact').innerHTML = '';
     saveContactsToStorage();
     renderContactsList();
+    }
 }
 
 function renderAddNewContact() {

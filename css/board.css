@@ -1032,6 +1032,11 @@ div#addContact2 {
     animation: slideIn 1s ease-in;
 }
 
+@media(min-width: 1435px) {
+    .svgImage {
+        display: none;
+    }
+}
 
 @media(max-width: 1435px) {
     .headBoard {
