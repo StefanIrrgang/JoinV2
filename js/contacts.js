@@ -471,7 +471,7 @@ function createNewContact() {
     sortContactsAlphabetically(Contacts);
     saveContactsToStorage();
     let theIndex = Contacts.findIndex(x => x.email === emailInput);
-    console.log(theIndex);
+    // console.log(theIndex);
 
     closeNewContact();
     renderContactsList();

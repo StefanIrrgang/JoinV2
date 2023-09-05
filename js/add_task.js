@@ -80,7 +80,7 @@ async function addTaskToBoard(currentListType) {
     await getCardsFromStorage();
 
     cards.push(theNewTask);
-    console.log(cards);
+    // console.log(cards);
     saveCardsToStorage();
     showTaskCreationSuccess();
     setTimeout(() => {
@@ -167,7 +167,7 @@ function closeCategoryInput() {
 }
 
 function selectedCategory(x) {
-    console.log(x);
+    // console.log(x);
     let element = categories[x];
     document.getElementById('category').innerHTML = `
     <h5>Category</h5>
@@ -342,8 +342,8 @@ function addContactToTask() {
     }
     window.addedContacts = addedContactsToTask;
     window.addedIds = addedIdsToTask;
-    console.log(addedContacts);
-    console.log(addedIds);
+    // console.log(addedContacts);
+    // console.log(addedIds);
 }
 
 function closeDropdownContact() {

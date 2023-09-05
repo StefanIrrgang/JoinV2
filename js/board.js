@@ -504,7 +504,7 @@ function prioButtonStyle(i) {
 }
 
 async function deleteCard(i) {
-    console.log('deleted', i);
+    // console.log('deleted', i);
     cards.splice(i, 1);
     await saveCardsToStorage();
     closeOverlay();
@@ -512,7 +512,7 @@ async function deleteCard(i) {
 
 //Edit cards
 function editCard(i) {
-    console.log('edited', i);
+    // console.log('edited', i);
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:block;";
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
@@ -635,7 +635,7 @@ function loadActiveStatePrio(i) {
                 let prioSelect2 = document.getElementById('prioSelect2');
                 prioSelect2.classList.add('active-state');
             }
-    console.log(currentPrioSelection);
+    // console.log(currentPrioSelection);
 }
 
 function addActiveState2(i, j) {
