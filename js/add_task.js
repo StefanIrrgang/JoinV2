@@ -105,11 +105,11 @@ function checkForInput() {
         return 0;
     }
     if (typeof theChosenCategory == 'undefined') {
-        alert("Please select category");
+        document.getElementById('FieldCategory').style.display = 'block';
         return 0;
     }
     if (typeof addedIds == 'undefined') {
-        alert("Please add contacts");
+        document.getElementById('FieldContact').style.display = 'block';
         return 0;
     }
     if (typeof priority == 'undefined') {

@@ -602,6 +602,14 @@ input[type="checkbox"]:checked {
     animation: slideFrame73 0.250s ease-in;
 }
 
+.requiredInputFields {
+    font-family: 'Inter';
+    font-size: small;
+    margin-top: 2px;
+    padding-left: 8px;
+    color: red;
+}
+
 @keyframes slideFrame73 {
     0% {
         transform: translateY(1000px);
