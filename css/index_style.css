@@ -196,7 +196,7 @@ form {
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    padding-left: 21px;
+    padding-left: 15px;
     padding-top: 5px;
     font-size: 20px;
 }
@@ -417,6 +417,26 @@ footer a:hover {
 }
 
 
+#nameAlert {
+    color: rgb(255, 129, 144);
+    margin-top: -30px;
+    margin-right: 210px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
+}
+
+
+#freeAlert {
+    color: rgb(255, 129, 144);
+    margin-top: -30px;
+    margin-right: 270px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
+}
+
+
 .banner {
     display: flex;
     justify-content: center;
@@ -554,7 +574,7 @@ footer a:hover {
     }
 
     .forgotPW {
-        margin-top: 0;
+        margin-top: 20px;
     }
 }
 
@@ -568,22 +588,22 @@ footer a:hover {
 
 @media(max-height: 800px) {
     .front-main-content {
-        margin-top: 0px !important;
+        margin-top: 0px;
     }
 
     .imgLogo {
-        height: 50px !important;
-        width: 50px !important;
-        top: 50px !important;
+        height: 90px !important;
+        width: 80px !important;
+        top: 40px !important;
         left: 40px !important;
     }
 
     .header {
-        margin: 50px 40px;
+        margin: 40px 40px;
     }
 
     .front-main-content {
-        margin-top: 80px;
+        /* margin-top: 80px; */
     }
 
     .logInButtonBox {
@@ -591,29 +611,30 @@ footer a:hover {
     }
 
     .logInButton {
-        height: 40px;
+        /* height: 40px; */
     }
 
     .content {
         height: 496px;
-        width: 345px;
+        /* width: 345px; */
     }
 
     button {
-        height: 70%;
+        /* height: 70%; */
     }
 
     .headerRight {
-        font-size: 16px;
+
+        /* font-size: 16px; */
     }
 
     .inputField {
-        width: 305px;
+        /* width: 305px; */
         height: 42px;
     }
 
     input {
-        width: 270px;
+        /* width: 270px; */
         height: 40px;
     }
 }
@@ -621,6 +642,10 @@ footer a:hover {
 
 @media(max-height: 930px) {
     .front-main-content {
-        margin-top: 40px;
+        margin-top: 15px;
+    }
+    .responsivSignUp {
+        gap: 10px !important;
+        height: 530px !important;
     }
 }

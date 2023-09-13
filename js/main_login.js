@@ -1,12 +1,22 @@
+/**
+ * The currently logged-in user's index.
+ * @type {number}
+ */
 let currentUser;
+
+
 loadcurrentUser();
 
-// Function to check the login credentials
+
+/**
+ * Checks the login credentials against stored contacts.
+ * If successful, sets the current user, stores it in local storage, and redirects to the summary page.
+ * If unsuccessful, displays an error message and highlights the password input field.
+ */
 function checkLogIn() {
     getContactsFromStorage();
     let emailInput = document.getElementById('emailInput');
     let passwordInput = document.getElementById('passwordInput');
-
     let isLoggedIn = false; // Variable to track if the login check was successful
 
     for (let i = 0; i < Contacts.length; i++) {
@@ -17,15 +27,13 @@ function checkLogIn() {
             isLoggedIn = true;
 
             currentUser = i;
-            // console.log(currentUser);
             localStorage.setItem('currentUser', currentUser);
             window.location.href = 'summary.html';
             break; // Exit the loop since no further checking is needed
         }
     }
 
-    if (!isLoggedIn) { // If the login check is successful, call the function test()
-        // If the login check fails, display an error message and highlight the password input field
+    if (!isLoggedIn) { 
         passwordAlert.textContent = "Wrong password Ups! Try again";
         passwordInput.parentElement.classList.add('redInput');
 
@@ -37,15 +45,20 @@ function checkLogIn() {
 }
 
 
+/**
+ * Loads the current user from local storage.
+ */
 function loadcurrentUser() {
     let storedCurrentUser = localStorage.getItem('currentUser');
     if (storedCurrentUser !== null) {
         currentUser = parseInt(storedCurrentUser);
-        // console.log(currentUser);
     }
 }
 
 
+/**
+ * Logs in as a guest user and redirects to the summary page.
+ */
 function guestLogIn() {
     localStorage.setItem('currentUser', 1000);
     window.location.href = 'summary.html';

@@ -6,11 +6,9 @@ let checkedSmallSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height
 <path d="M9.54996 15.65L18.025 7.175C18.225 6.975 18.4625 6.875 18.7375 6.875C19.0125 6.875 19.25 6.975 19.45 7.175C19.65 7.375 19.75 7.6125 19.75 7.8875C19.75 8.1625 19.65 8.4 19.45 8.6L10.25 17.8C10.05 18 9.81663 18.1 9.54996 18.1C9.2833 18.1 9.04996 18 8.84996 17.8L4.54996 13.5C4.34996 13.3 4.25413 13.0625 4.26246 12.7875C4.2708 12.5125 4.37496 12.275 4.57496 12.075C4.77496 11.875 5.01246 11.775 5.28746 11.775C5.56246 11.775 5.79996 11.875 5.99996 12.075L9.54996 15.65Z" fill="#2A3647"/>
 </g>
 </svg>`;
-
 let smallXSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
 <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-
 let upArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" transform="rotate(180)">
 <mask id="mask0_77977_799" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24" >
 <rect width="24" height="24" fill="#D9D9D9" />
@@ -28,9 +26,11 @@ let downArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 </g>
 </svg>`;
 let addedSubtasks = [];
+let isFormValidated = false;
 async function main() {
     let contactsInTask = [];
     await getContactsFromStorage();
+    await getCategoriesFromStorage();
     for (let j = 0; j < Contacts.length; j++) {
         const contact = Contacts[j];
         let addedContactFirstName = contact['firstName'];
@@ -41,7 +41,6 @@ async function main() {
             "lastName": addedContactLastName,
             "added": added,
         };
-
         contactsInTask.push(addedContactToTask);
     }
     window.addedContacts = contactsInTask;
@@ -49,43 +48,44 @@ async function main() {
 
 async function addTaskToBoard(currentListType) {
     checkForInput();
-    let inputTitle = document.getElementById('addTaskTitle').value;
-    let description = document.getElementById('descriptionTextArea').value;
-    let dueDate = document.getElementById('date').value;
-    let addedUsers = [];
-    let addedUsersFullNames = [];
-    for (let t = 0; t < addedIds.length; t++) {
-        const element = addedIds[t];
-        let addedUser = Contacts[element]['firstLetters'];
-        addedUsers.push(addedUser);
-        let addedUserFullName = Contacts[element]['name'];
-        addedUsersFullNames.push(addedUserFullName);
-    };
-    if (priority == '0') { window.prio = "Urgent" };
-    if (priority == '1') { window.prio = "Medium" };
-    if (priority == '2') { window.prio = "Low" };
-    if (addedSubtasks.length == '0') { subtasks = [] }
-    let theNewTask = {
-        "category": `${categories[theChosenCategory]['name']}`,
-        "title": inputTitle,
-        "description": description,
-        "progress": "0",
-        "assignedUser": addedUsers,
-        "assignedUserFullName": addedUsersFullNames,
-        "prio": prio,
-        "dueDate": dueDate,
-        "subtasks": subtasks,
-        "listType": currentListType,
+    if (isFormValidated) {
+        let inputTitle = document.getElementById('addTaskTitle').value;
+        let description = document.getElementById('descriptionTextArea').value;
+        let dueDate = document.getElementById('date').value;
+        let addedUsers = [];
+        let addedUsersFullNames = [];
+        for (let t = 0; t < addedIds.length; t++) {
+            const element = addedIds[t];
+            let addedUser = Contacts[element]['firstLetters'];
+            addedUsers.push(addedUser);
+            let addedUserFullName = Contacts[element]['name'];
+            addedUsersFullNames.push(addedUserFullName);
+        };
+        if (priority == '0') { window.prio = "Urgent" };
+        if (priority == '1') { window.prio = "Medium" };
+        if (priority == '2') { window.prio = "Low" };
+        if (addedSubtasks.length == '0') { subtasks = [] }
+        let theNewTask = {
+            "category": `${categories[theChosenCategory]['name']}`,
+            "title": inputTitle,
+            "description": description,
+            "progress": "0",
+            "assignedUser": addedUsers,
+            "assignedUserFullName": addedUsersFullNames,
+            "prio": prio,
+            "dueDate": dueDate,
+            "subtasks": subtasks,
+            "listType": currentListType,
+        }
+        await getCardsFromStorage();
+        cards.push(theNewTask);
+        console.log(cards);
+        saveCardsToStorage();
+        showTaskCreationSuccess();
+        setTimeout(() => {
+            document.location.href = "board.html";
+        }, 1500);
     }
-    await getCardsFromStorage();
-
-    cards.push(theNewTask);
-    // console.log(cards);
-    saveCardsToStorage();
-    showTaskCreationSuccess();
-    setTimeout(() => {
-        document.location.href = "board.html";
-    }, 1500);
 }
 
 function checkForInput() {
@@ -96,27 +96,28 @@ function checkForInput() {
         alert("Please enter a title");
         return 0;
     }
-    if (!description) {
+    else if (!description) {
         alert("Please enter a description");
         return 0;
     }
-    if (!dueDate) {
+    else if (!dueDate) {
         alert("Please set due date");
         return 0;
     }
-    if (typeof theChosenCategory == 'undefined') {
+    else if (typeof theChosenCategory === 'undefined') {
         document.getElementById('FieldCategory').style.display = 'block';
         return 0;
     }
-    if (typeof addedIds == 'undefined') {
+    else if (typeof addedIds === 'undefined') {
         document.getElementById('FieldContact').style.display = 'block';
         return 0;
     }
-    if (typeof priority == 'undefined') {
-        alert("Please select priority");
+    else if (typeof priority === 'undefined') {
+        document.getElementById('PrioCategory').style.display = 'block';
         return 0;
+    } else {
+        isFormValidated = true;
     }
-
 }
 
 function openCategoryDropDown() {
@@ -127,23 +128,21 @@ function openCategoryDropDown() {
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
     ;
-    categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;       
+    categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
         categoryContainer.innerHTML += `<div class="category-selection" onclick="selectedCategory(${i})">${element['name']}<svg class="new-category-color">
         <circle cx="50%" cy="50%" r="12" stroke="black" stroke-width="0" fill="${element['color']}" />
         </svg> </div>`;
     }
-
-
 }
 
- function openCategoryInput() {
-     let categoryContainer = document.getElementById('addCategory');
-     categoryContainer.innerHTML = "";
-     let categoryMainContainer = document.getElementById('category');
-     categoryMainContainer.innerHTML = "";
-     categoryMainContainer.innerHTML = `
+function openCategoryInput() {
+    let categoryContainer = document.getElementById('addCategory');
+    categoryContainer.innerHTML = "";
+    let categoryMainContainer = document.getElementById('category');
+    categoryMainContainer.innerHTML = "";
+    categoryMainContainer.innerHTML = `
      <h5>Category</h5>
      <div class="add-category-container">
      <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
@@ -154,12 +153,10 @@ function openCategoryDropDown() {
      <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
      </div>
      <div class="selectable-category-colors" id="selectable_category_colors">
-
      </div>
      `;
-     renderSelectableCategoryColors();
-
- }
+    renderSelectableCategoryColors();
+}
 
 function closeCategoryInput() {
     document.getElementById('category').innerHTML = "";
@@ -167,7 +164,7 @@ function closeCategoryInput() {
 }
 
 function selectedCategory(x) {
-    // console.log(x);
+    console.log(x);
     let element = categories[x];
     document.getElementById('category').innerHTML = `
     <h5>Category</h5>
@@ -192,10 +189,7 @@ function renderSelectableCategoryColors() {
                 <circle id="circle_${element}" cx="12" cy="12" r="10" stroke="black" stroke-width="0" fill="${element}" />
                 </svg>
             </div>`;
-
-
     }
-
 }
 
 function selectedCategoryColor(x) {
@@ -215,7 +209,7 @@ async function addCategory() {
     };
     categories.push(newCategory);
     openCategoryDropDown();
-    saveCategoriesToStorage()
+    await saveCategoriesToStorage()
     await getCardsFromStorage()
 }
 
@@ -230,7 +224,6 @@ function openDropdownContact() {
     addContactMainContainer.innerHTML += `<div class="contacts_list_add_task" id="addContact"></div>`;
     let addContactContainer = document.getElementById('addContact');
     addContactContainer.innerHTML = "";
-
     for (let j = 0; j < Contacts.length; j++) {
         const element = Contacts[j];
         const element2 = addedContacts[j];
@@ -284,9 +277,9 @@ function openTranspOverlay() {
 function closeTranspOverlay() {
     let transparentOverlay = document.getElementById('transparentoverlay');
     transparentOverlay.style.display = "none";
-    if(!transparentOverlay.classList.contains("dropdownclosed")){
+    if (!transparentOverlay.classList.contains("dropdownclosed")) {
         closeDropdownContact();
-    }   
+    }
 }
 
 function classToTranspOverlay() {
@@ -326,7 +319,6 @@ function addContactToTask() {
             };
             addedContactsToTask.push(addedContactToTask);
             addedIdsToTask.push(z);
-
         }
         else {
             let addedContactFirstName = contact['firstName'];
@@ -342,8 +334,8 @@ function addContactToTask() {
     }
     window.addedContacts = addedContactsToTask;
     window.addedIds = addedIdsToTask;
-    // console.log(addedContacts);
-    // console.log(addedIds);
+    console.log(addedContacts);
+    console.log(addedIds);
 }
 
 function closeDropdownContact() {
@@ -376,7 +368,6 @@ function renderAddedContactLabels() {
         </div>
         `
         }
-
     }
 }
 
@@ -406,14 +397,12 @@ function addActiveState(j) {
     }
     let priorityNumber = j;
     window.priority = priorityNumber;
-
 };
 
 function getDueDate() {
     let dueDateInput = document.getElementById('date').value;
     console.log(dueDateInput);
 }
-
 
 function createTask() {
     getDueDate();
@@ -423,16 +412,13 @@ function openSubtaskInput() {
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     addSubtaskContainer.innerHTML = "";
     addSubtaskContainer.innerHTML += `
-        
         <input type="text" placeholder="New subtask" id="added_subtask">
         <button class="close-category-input-btn" onclick="cancelSubtaskInput()">${smallXSVG}</button>
         <svg height="40" width="3">
             <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
         </svg>
         <button class="add-category-btn" onclick="addSubtask()">${checkedSmallSVG}</button>
-        
         `;
-
 }
 
 function cancelSubtaskInput() {
@@ -468,7 +454,6 @@ function addSubtask() {
         </defs>
     </svg>${addedSubtaskNameInput}
 </div>`
-
     let addedSubtask = {
         "nameSub": addedSubtaskNameInput,
         "status": "unchecked"
@@ -478,11 +463,9 @@ function addSubtask() {
     window.subtasks = addedSubtasks;
 }
 
-function showTaskCreationSuccess(){
-
+function showTaskCreationSuccess() {
     //  let theContainerToShowItIn = document.getElementById('add_task_main');
     let theContainerToShow = document.getElementById('task_creation_success');
     theContainerToShow.classList.remove('d-none');
     theContainerToShow.classList.add('frame_73_animate');
-
 }
