@@ -135,6 +135,10 @@ function setupEventListenersAfterDOMLoaded() {
 function checkBox() {
     let rememberMeImg = document.getElementById('rememberMe');
 
+    if(rememberMeImg.classList.contains('checkBox')) {
+        localStorage.setItem('rememberMe', 0);
+    }
+
     if (rememberMeImg.classList.contains('uncheckBox')) {
         rememberMeImg.classList.remove('uncheckBox');
         rememberMeImg.classList.add('checkBox');
@@ -143,6 +147,20 @@ function checkBox() {
         rememberMeImg.classList.remove('checkBox');
     }
 }
+
+async function checkRememberMe() {
+    await getContactsFromStorage()
+    let rememberMeCheckBox = document.getElementById('rememberMe');
+    let emailInput = document.getElementById('emailInput');
+    let passwordInput = document.getElementById('passwordInput');
+
+    if(rememberMe === 1 && currentUser !== 1000) {
+        rememberMeCheckBox.click();
+        emailInput.value = Contacts[currentUser].email;
+        passwordInput.value = Contacts[currentUser].password;
+    }
+}
+
 
 /////////////////////////////////////////// Log In //////////////////////////////////////////////////
 
@@ -154,6 +172,7 @@ function renderLogIn() {
 
     contentbox.innerHTML = returnLogInHTML();
     setupEventListenersAfterDOMLoaded();
+    checkRememberMe();
     document.getElementById('headerRight').classList.remove('d-none');
     document.getElementById('footer').classList.remove('d-none');
 }

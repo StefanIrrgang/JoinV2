@@ -4,6 +4,8 @@
  */
 let currentUser;
 
+let rememberMe;
+
 
 loadcurrentUser();
 
@@ -18,6 +20,11 @@ function checkLogIn() {
     let emailInput = document.getElementById('emailInput');
     let passwordInput = document.getElementById('passwordInput');
     let isLoggedIn = false; // Variable to track if the login check was successful
+    let rememberMeImg = document.getElementById('rememberMe');
+
+    if(rememberMeImg.classList.contains('checkBox')) {
+        localStorage.setItem('rememberMe', 1);
+    }
 
     for (let i = 0; i < Contacts.length; i++) {
         let email = Contacts[i].email;
@@ -50,8 +57,12 @@ function checkLogIn() {
  */
 function loadcurrentUser() {
     let storedCurrentUser = localStorage.getItem('currentUser');
+    let stordeRememberMe = localStorage.getItem('rememberMe');
     if (storedCurrentUser !== null) {
         currentUser = parseInt(storedCurrentUser);
+    }
+    if(stordeRememberMe !== null) {
+        rememberMe = parseInt(stordeRememberMe);
     }
 }
 

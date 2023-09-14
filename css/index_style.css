@@ -602,39 +602,20 @@ footer a:hover {
         margin: 40px 40px;
     }
 
-    .front-main-content {
-        /* margin-top: 80px; */
-    }
 
     .logInButtonBox {
         gap: 10px;
     }
 
-    .logInButton {
-        /* height: 40px; */
-    }
-
     .content {
         height: 496px;
-        /* width: 345px; */
-    }
-
-    button {
-        /* height: 70%; */
-    }
-
-    .headerRight {
-
-        /* font-size: 16px; */
     }
 
     .inputField {
-        /* width: 305px; */
         height: 42px;
     }
 
     input {
-        /* width: 270px; */
         height: 40px;
     }
 }
