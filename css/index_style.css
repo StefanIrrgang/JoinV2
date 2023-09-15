@@ -553,6 +553,11 @@ footer a:hover {
 @media(max-height: 930px) {
     .front-main-content {
         margin-top: 15px;
+        overflow-y: auto;
+    }
+
+    .front-main-content::-webkit-scrollbar {
+        width: 8px;
     }
 
     .responsivSignUp {
