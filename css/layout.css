@@ -27,7 +27,6 @@ body {
     position: relative;
 }
 
-
 .main-content {
     display: flex;
     height: 100vH;
@@ -319,7 +318,6 @@ div#headsubmenu a:last-child {
     height: 32px;
 }
 
-
 .backArrow {
     background-image: url("../assets/img/logInSignUp/backArrow.svg");
     background-repeat: no-repeat;
@@ -327,11 +325,9 @@ div#headsubmenu a:last-child {
     background-position: center;
 }
 
-
 .backArrow:hover {
     background-image: url("../assets/img/logInSignUp/backArrowHover.svg");
 }
-
 
 @media only screen and (min-width: 993px) and (max-width: 1300px) {
 
@@ -346,8 +342,7 @@ div#headsubmenu a:last-child {
     .title span {
         font-size: 25px;
     }
-    
-    }
+}
 
 
 @media only screen and (max-width: 992px) {
@@ -364,7 +359,7 @@ div#headsubmenu a:last-child {
     img.onlymob.logo-mob {
         margin-left: 25px;
     }
-    
+
     .onlymob {
         display: block;
     }
@@ -475,5 +470,4 @@ div#headsubmenu a:last-child {
     .title span {
         font-size: 20px;
     }
-
 }

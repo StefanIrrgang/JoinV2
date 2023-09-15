@@ -8,18 +8,15 @@ body {
     overflow-y: hidden;
 }
 
-
 .d-none {
     display: none !important;
 }
-
 
 .header {
     display: flex;
     justify-content: space-between;
     margin: 80px 100px;
 }
-
 
 .headerRight {
     width: 279px;
@@ -29,7 +26,6 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
 
 button {
     background-color: rgb(42, 54, 71);
@@ -44,18 +40,15 @@ button {
     transition: 150ms ease-in-out;
 }
 
-
 button:hover {
     background-color: #29ABE2;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
 }
 
-
 .sendEmailButton {
     height: 51px;
     width: 264px;
 }
-
 
 .logo {
     width: 500px;
@@ -68,7 +61,6 @@ button:hover {
     z-index: 100;
 }
 
-
 .imgLogo {
     top: 80px !important;
     left: 100px !important;
@@ -77,12 +69,10 @@ button:hover {
     height: 122px !important;
 }
 
-
 .contentbox {
     display: flex;
     justify-content: center;
 }
-
 
 .content {
     background-color: #FFFFFF;
@@ -95,7 +85,6 @@ button:hover {
     gap: 32px;
 }
 
-
 .front-main-content {
     display: flex;
     flex-direction: column;
@@ -106,12 +95,10 @@ button:hover {
     margin-bottom: 50px;
 }
 
-
 .forgotPW {
     width: 832px !important;
     margin-top: 80px;
 }
-
 
 .headingContainer {
     display: flex;
@@ -121,12 +108,10 @@ button:hover {
     width: 100%;
 }
 
-
 .imgHeadingContainer {
     width: 32px;
     height: 32px;
 }
-
 
 .backArrow {
     background-image: url("../assets/img/logInSignUp/backArrow.svg");
@@ -135,11 +120,9 @@ button:hover {
     background-position: center;
 }
 
-
 .backArrow:hover {
     background-image: url("../assets/img/logInSignUp/backArrowHover.svg");
 }
-
 
 #startBackground {
     position: absolute;
@@ -149,13 +132,11 @@ button:hover {
     transition: 500ms;
 }
 
-
 .blueSeperator {
     background-color: #29ABE2;
     width: 150px;
     height: 3px;
 }
-
 
 h1 {
     font-size: 61px;
@@ -163,7 +144,6 @@ h1 {
     margin-bottom: 0;
     margin-top: 0;
 }
-
 
 h2 {
     font-size: 20px;
@@ -173,7 +153,6 @@ h2 {
     margin: 0;
 }
 
-
 form {
     display: flex;
     flex-direction: column;
@@ -181,14 +160,12 @@ form {
     gap: 32px
 }
 
-
 .inputBox {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px
 }
-
 
 .inputField {
     display: flex;
@@ -201,7 +178,6 @@ form {
     font-size: 20px;
 }
 
-
 input {
     width: 380px;
     border-radius: 10px;
@@ -210,34 +186,28 @@ input {
     outline: none;
 }
 
-
 input::placeholder {
     color: #D1D1D1;
     font-size: 20px;
 }
 
-
 .inputField:focus-within {
     border: 1px solid #29ABE2;
 }
-
 
 .redInput {
     border: 1px solid #ff8190;
 }
 
-
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
-
 
 .checkBoxLogIn {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
 
 .checkBoxSignIn {
     display: flex;
@@ -247,7 +217,6 @@ input:-webkit-autofill {
     margin-right: -30px;
 }
 
-
 .rememberMeForgetBox {
     display: flex;
     justify-content: space-between;
@@ -255,18 +224,15 @@ input:-webkit-autofill {
     gap: 35px;
 }
 
-
 .rememberMeForgetBox a {
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
 }
 
-
 #fmp:hover {
     text-decoration: underline 2px;
 }
-
 
 .logInButtonBox {
     display: flex;
@@ -274,19 +240,16 @@ input:-webkit-autofill {
     margin-bottom: 40px;
 }
 
-
 .logInButton {
     width: 110px;
     height: 51px;
 }
-
 
 .continueButton {
     width: 264px;
     height: 51px;
     margin-top: 32px;
 }
-
 
 .guestLogIn {
     color: #2A3647;
@@ -295,18 +258,15 @@ input:-webkit-autofill {
     width: 177px;
 }
 
-
 .guestLogIn:hover {
     color: #29ABE2;
     border: 1px solid #29ABE2;
     background-color: white;
 }
 
-
 .passwordImage {
     cursor: pointer;
 }
-
 
 #rememberMe {
     width: 24px;
@@ -314,18 +274,15 @@ input:-webkit-autofill {
     cursor: pointer;
 }
 
-
 .checkBox {
     background-image: url('../assets/img/logInSignUp/checkedButton.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-
 .checkBox:hover {
     background-image: url('../assets/img/logInSignUp/checkedButtonHover.svg');
 }
-
 
 .uncheckBox {
     background-image: url('../assets/img/logInSignUp/uncheckButton.svg');
@@ -333,11 +290,9 @@ input:-webkit-autofill {
     background-position: center;
 }
 
-
 .uncheckBox:hover {
     background-image: url('../assets/img/logInSignUp/uncheckedButtonHover.svg');
 }
-
 
 input[type="checkbox"] {
     appearance: none;
@@ -350,8 +305,6 @@ input[type="checkbox"] {
     /* Opera */
 }
 
-
-/* Styling für die Checkbox hinzu */
 input[type="checkbox"] {
     background-image: url("../assets/img/logInSignUp/uncheckButton.svg");
     background-repeat: no-repeat;
@@ -361,8 +314,6 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-
-/* Benutzerdefiniertes Styling für die Checkbox, wenn sie ausgewählt ist */
 input[type="checkbox"]:checked {
     background-image: url("../assets/img/logInSignUp/checkedButton.svg");
     width: 24px !important;
@@ -370,18 +321,15 @@ input[type="checkbox"]:checked {
     background-position: center !important;
 }
 
-
 input[type="checkbox"]:checked:hover {
     background-image: url('../assets/img/logInSignUp/checkedButtonHover.svg');
 }
-
 
 footer {
     display: flex;
     justify-content: center;
     gap: 30px;
 }
-
 
 footer a {
     font-size: 16px;
@@ -390,12 +338,10 @@ footer a {
     font-weight: 400;
 }
 
-
 footer a:hover {
     color: rgba(41, 171, 226, 1);
     font-weight: 700;
 }
-
 
 #passwordAlert {
     color: rgb(255, 129, 144);
@@ -406,7 +352,6 @@ footer a:hover {
     height: 25px;
 }
 
-
 #emailAlert {
     color: rgb(255, 129, 144);
     margin-top: -30px;
@@ -415,7 +360,6 @@ footer a:hover {
     font-size: 13px;
     height: 25px;
 }
-
 
 #nameAlert {
     color: rgb(255, 129, 144);
@@ -426,7 +370,6 @@ footer a:hover {
     height: 25px;
 }
 
-
 #freeAlert {
     color: rgb(255, 129, 144);
     margin-top: -30px;
@@ -435,7 +378,6 @@ footer a:hover {
     font-size: 13px;
     height: 25px;
 }
-
 
 .banner {
     display: flex;
@@ -455,14 +397,10 @@ footer a:hover {
     gap: 5px;
 }
 
-
 .banner.visible {
     transform: none;
     transition: transform 0.5s ease-in-out;
 }
-
-
-/* max-width: 810px */
 
 @media(max-width: 870px) {
     .forgotPW {
@@ -470,9 +408,6 @@ footer a:hover {
         text-align: center;
     }
 }
-
-
-/* max-width: 680px */
 
 @media(max-width: 680px) {
     .headingContainer {
@@ -560,9 +495,6 @@ footer a:hover {
     }
 }
 
-
-/* max-height: 870px */
-
 @media(max-height: 870px) {
     .front-main-content {
         margin-top: 115px;
@@ -578,13 +510,11 @@ footer a:hover {
     }
 }
 
-
 @media(max-height: 650px) {
     .header {
         margin: 20px 80px;
     }
 }
-
 
 @media(max-height: 800px) {
     .front-main-content {
@@ -620,11 +550,11 @@ footer a:hover {
     }
 }
 
-
 @media(max-height: 930px) {
     .front-main-content {
         margin-top: 15px;
     }
+
     .responsivSignUp {
         gap: 10px !important;
         height: 530px !important;

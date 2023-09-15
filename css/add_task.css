@@ -61,7 +61,7 @@ h5 {
     border-radius: 10px;
     padding: 18px 21px 18px 21px;
     border: 1px solid var(--grey);
-    font-family: "inter";
+    font-family: 'Inter';
     font-size: 20px;
     border: 1px solid #d1d1d1;
 }
@@ -196,7 +196,6 @@ input {
     box-sizing: border-box;
     font-size: 20px;
     border: 1px solid #d1d1d1;
-
 }
 
 #addNewSubtask input {
@@ -343,7 +342,6 @@ button.SubTaskPrios:hover {
 }
 
 .category-selection {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -402,7 +400,6 @@ div#addCategory {
     border-radius: 0;
     color: black;
     outline: 0;
-
 }
 
 .close-category-input-btn {
@@ -511,7 +508,6 @@ div#addCategory {
 }
 
 .frame_79 p {
-
     display: flex;
     width: 28px;
     height: 10px;
@@ -520,9 +516,7 @@ div#addCategory {
     align-items: center;
     flex-shrink: 0;
     color: #FFF;
-
-    /* Version 2/t7 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -589,13 +583,11 @@ input[type="checkbox"]:checked {
 
 .frame_73 p {
     color: #FFF;
-    /* Version 2/t6 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
 }
 
 .frame_73_animate {
@@ -623,14 +615,12 @@ input[type="checkbox"]:checked {
     display: none;
 }
 
-
 @media(max-width: 1240px) {
     .mainAddTask {
         width: 100%;
         max-width: 800px;
     }
 }
-
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
 
@@ -643,7 +633,6 @@ input[type="checkbox"]:checked {
     .SubTaskPrios {
         padding: 13px 6px;
     }
-
 }
 
 @media only screen and (max-width: 992px) {
@@ -712,10 +701,7 @@ input[type="checkbox"]:checked {
     button.SubTaskPrios {
         width: 100%;
     }
-
 }
-
-
 
 @media(max-height: 1100px) {
     .clearCreateButtons {

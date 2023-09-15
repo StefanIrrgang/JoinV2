@@ -1015,16 +1015,6 @@ div#addContact2 {
     background-repeat: no-repeat;
 }
 
-/* @keyframes slide-in {
-    from {
-        transform: translateX(100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-} */
-
 .includeTaskForm {
     z-index: 99;
     width: 100%;
@@ -1301,7 +1291,3 @@ div#addContact2 {
         border-radius: 0;
     }
 }
-
-/* @media(max-width: 3440px) {
-    
-} */

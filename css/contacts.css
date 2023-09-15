@@ -9,7 +9,6 @@ body {
 #name_Alert {
     color: rgb(255, 129, 144);
     margin-top: -30px;
-    /* margin-right: 210px; */
     margin-bottom: -40px;
     font-size: 13px;
     height: 40px;
@@ -46,16 +45,12 @@ body {
     background-position-x: center;
 }
 
-
-
-
 .frame-97::-webkit-scrollbar-button:vertical:decrement {
 
     background: url('/assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
-
 }
 
 .frame-97::-webkit-scrollbar-button:vertical:increment {
@@ -64,7 +59,6 @@ body {
     background-position: center;
     height: 20px;
     margin: top 20px;
-
 }
 
 .contacts-list {
@@ -104,7 +98,7 @@ body {
 
 .frame_81 span {
 
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -113,7 +107,7 @@ body {
 
 .frame_81 a {
     margin: 0;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -134,7 +128,6 @@ body {
 }
 
 .frame_79 p {
-
     display: flex;
     width: 28px;
     height: 10px;
@@ -143,9 +136,7 @@ body {
     align-items: center;
     flex-shrink: 0;
     color: #FFF;
-
-    /* Version 2/t7 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -172,19 +163,17 @@ body {
 }
 
 .new-contact :hover {
-
     cursor: pointer;
 }
 
 .new-contact p {
 
     color: var(--white, #FFF);
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    /* 25.2px */
 }
 
 .frame-112 {
@@ -202,9 +191,8 @@ body {
 }
 
 .frame-112 p {
-
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -223,9 +211,7 @@ body {
 }
 
 .frame-119 svg {
-
     align-self: stretch;
-
 }
 
 .frame-40 {
@@ -243,12 +229,11 @@ body {
 
 .contacts-title {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 61px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    /* 73.2px */
 }
 
 .contacts-slogan {
@@ -269,17 +254,14 @@ body {
 }
 
 .pointer-events-none {
-
     pointer-events: none;
 }
 
 .floating-contact {
     padding-left: 15px;
-
 }
 
 .floating-contact-animate {
-
     animation: slideFloatingContact 0.125s ease-in;
 }
 
@@ -313,28 +295,23 @@ body {
 }
 
 .frame_99 p {
-
     display: flex;
     width: 80px;
     height: 28.571px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-
     color: #FFF;
     text-align: center;
-    /* Version 2/t2 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
-    /* 56.4px */
     position: absolute;
 }
 
 .frame-105 {
-
     display: flex;
     align-items: center;
     gap: 54px;
@@ -349,14 +326,11 @@ body {
     flex-direction: column;
     justify-content: center;
     color: #000;
-
-    /* Version 2/t6 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
 }
 
 .frame-204 {
@@ -405,14 +379,11 @@ body {
     width: 100%;
     box-sizing: border-box;
     color: #000;
-
-    /* Version 2/t2 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
-    /* 56.4px */
     margin: 0;
 }
 
@@ -432,7 +403,6 @@ body {
 }
 
 .frame-101 {
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -441,34 +411,29 @@ body {
 
 .details-title {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    /* 19.2px */
 }
 
 .details-email {
     color: #007CEE;
-    /* Version 2/body */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 19.2px */
 }
 
 .details-phone {
     color: #000;
-    /* Version 2/body */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 19.2px */
 }
 
 .d-none {
@@ -488,7 +453,6 @@ body {
     align-items: center;
     z-index: 99;
     background: rgb(0 0 0 / 39%);
-
 }
 
 .new-contact-main {
@@ -503,7 +467,6 @@ body {
 }
 
 .new-contact-main-animate {
-
     animation: slideInNewContactMain 0.225s ease-in;
 }
 
@@ -524,9 +487,7 @@ body {
 }
 
 .close-new-contact-animate {
-
     animation: slideOutNewContactMain 0.225s ease-in;
-
 }
 
 @keyframes slideOutNewContactMain {
@@ -571,26 +532,21 @@ body {
 
 .frame-211 {
     color: var(--white, #FFF);
-    /* Version 2/t1 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 61px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    /* 73.2px */
 
 }
 
 .frame-212 {
     color: var(--white, #FFF);
-
-    /* Version 2/t5 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 27px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 32.4px */
 }
 
 .frame-79 {
@@ -602,8 +558,6 @@ body {
     border: 3px solid var(--white, #FFF);
     background: #FFF;
     box-sizing: border-box;
-
-    /* nuevo */
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
@@ -627,16 +581,13 @@ body {
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-
     color: #FFF;
     text-align: center;
-    /* Version 2/t2 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
-    /* 56.4px */
     position: absolute;
 }
 
@@ -646,7 +597,6 @@ body {
     position: absolute;
     left: 28px;
     top: 28px;
-
 }
 
 .frame-215 form {
@@ -679,26 +629,20 @@ body {
 }
 
 .frame-157 input {
-
-
-    /* Version 2/t6 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
     border: none;
     outline: 0;
 }
 
 .frame-157 input::placeholder {
-
     color: var(--style, #D1D1D1);
 }
 
 .frame-157 svg {
-
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -712,7 +656,6 @@ body {
 }
 
 .add-contact-buttons-main {
-
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
@@ -747,14 +690,11 @@ body {
 
 .add-contact-cancel span {
     color: var(--version-2-main-color, #2A3647);
-
-    /* Version 2/t6 */
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
 }
 
 .add-contact-create {
@@ -775,14 +715,12 @@ body {
 }
 
 .add-contact-create span {
-
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    /* 25.2px */
 }
 
 
@@ -844,10 +782,7 @@ body {
         gap: 20px;
         padding: 15px 18px;
     }
-
 }
-
-
 
 @media only screen and (max-width: 992px) {
 
@@ -1059,9 +994,6 @@ body {
         font-size: 17px;
         line-height: 1.1em;
         color: #FFF;
-        font-family: Inter;
+        font-family: 'Inter';
     }
-
-
-
 }
