@@ -1,4 +1,4 @@
-const STORAGE_TOKEN = '3ENG5I37YYIRIRHAMOTSPWZ7QUU5KTVYOANLRZYR';
+const STORAGE_TOKEN = '22IHGHSO6RK69ZWRK7OJ83P8M7HBHL2ZBOQ17FRQ';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 //Save and load contacts
@@ -15,7 +15,6 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 // }
 // }
 
-
 //Save and load cards
 // function saveCardsToStorage() {
 //     let cardsAsString = JSON.stringify(cards);
@@ -29,7 +28,6 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 //         cards = JSON.parse(cardsAsString);
 //     }
 // }
-
 
 //Save and load contacts in remoteStorage
 async function saveContactsToStorage() { // Name muss dann angepasst werden
@@ -45,7 +43,6 @@ async function getContactsFromStorage() {
     try {
         const response = await fetch(url);
         const data = await response.json();
-
         if (data.data) {
             Contacts = JSON.parse(data.data.value);
         } else {
@@ -55,7 +52,6 @@ async function getContactsFromStorage() {
         throw new Error(`Error fetching data: ${error}`);
     }
 }
-
 
 //Save and load cards in remoteStorage
 async function saveCardsToStorage() { // Name muss dann angepasst werden
@@ -71,7 +67,6 @@ async function getCardsFromStorage() { // Name muss dann angepasst werden
     try {
         const response = await fetch(url);
         const data = await response.json();
-
         if (data.data) {
             cards = JSON.parse(data.data.value);
         } else {
@@ -81,7 +76,6 @@ async function getCardsFromStorage() { // Name muss dann angepasst werden
         throw new Error(`Error fetching data: ${error}`);
     }
 }
-
 
 //Save and load categories in remoteStorage
 async function saveCategoriesToStorage() { // Name muss dann angepasst werden
@@ -97,7 +91,6 @@ async function getCategoriesFromStorage() { // Name muss dann angepasst werden
     try {
         const response = await fetch(url);
         const data = await response.json();
-
         if (data.data) {
             categories = JSON.parse(data.data.value);
         } else {

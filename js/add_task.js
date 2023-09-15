@@ -156,7 +156,7 @@ function closeCategoryInput() {
 /** This function closes the category input field and returns a global variable of the chosen category.*/
 function selectedCategory(x) {
     let element = categories[x];
-    document.getElementById('category').innerHTML = renderSelectedCategory();
+    document.getElementById('category').innerHTML = renderSelectedCategory(element);
     window.theChosenCategory = x;
 }
 
@@ -226,14 +226,14 @@ function generateOpenAddContactMainContainer() {
 function generateUnselectedContact(j, element) {
     let addContactContainer = document.getElementById('addContact');
     let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-    addContactContainer.innerHTML += renderGenerateUnselectedContact(j, element);
+    addContactContainer.innerHTML += renderGenerateUnselectedContact(firstTwoLetters, j, element);
 }
 
 /** This function generates the contacts that have been added to the selected contacts list. */
 function generateSelectedContact(j, element) {
     let addContactContainer = document.getElementById('addContact');
     let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-    addContactContainer.innerHTML += RenderGenerateSelectedContact(j, element);
+    addContactContainer.innerHTML += RenderGenerateSelectedContact(firstTwoLetters, j, element);
 }
 
 /** This function generates a transparent overlay that is used to close the dropdown contact list */
@@ -343,7 +343,7 @@ function renderAddedContactLabels() {
         let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
         let addedContactsNameTagsMain = document.getElementById('added_contacts_name_tags_main');
         if (element['added'] == 'yes') {
-            addedContactsNameTagsMain.innerHTML += RenderAddedContactsNameTagsMain(p);
+            addedContactsNameTagsMain.innerHTML += RenderAddedContactsNameTagsMain(firstTwoLetters, p);
         }
     }
 }
@@ -410,7 +410,7 @@ function addSubtask() {
 /** This function generates the container with the added subtask. */
 function generateTheNewSubtask(addedSubtaskNameInput) {
     let subtaskMain = document.getElementById('subtask_main');
-    subtaskMain.innerHTML += RenderSubtaskMainHTML();
+    subtaskMain.innerHTML += RenderSubtaskMainHTML(addedSubtaskNameInput);
 }
 
 /** This function generates and animates the small floating info-box at the task creation success.*/

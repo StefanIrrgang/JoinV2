@@ -3,7 +3,6 @@
  */
 const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
-
 /**
  * Define of times of day for welcome message
  */
@@ -20,7 +19,6 @@ const nightend = 24;
 const nightstart2 = 0;
 const nightend2 = 5;
 
-
 /**
  * Initiates the welcome message for logged in user and card datas.
  */
@@ -34,7 +32,6 @@ async function init() {
     filterCardsPrioHigh();
 }
 
-
 /**
  * Initiates the welcome message. Checks the current time.
  */
@@ -42,7 +39,6 @@ function welcomeMsgTime() {
     const currenttime = new Date().getHours();
     checkCurrentTime(currenttime);
 }
-
 
 /**
  * Compares current time with conditions
@@ -68,7 +64,6 @@ function checkCurrentTime(currenttime) {
     }
 }
 
-
 /**
  * Greeting the logged in user by name.
  */
@@ -86,7 +81,6 @@ async function welcomeMsgUser() {
         }
     }
 }
-
 
 /**
  * Mobile width check and adding class for mobile animation of welcome message. 
@@ -110,10 +104,8 @@ function addClassMobile() {
     }
 }
 
-
 // Checks the media query conditions when changes BOM width
 window.addEventListener('resize', addClassMobile);
-
 
 /**
  * Count the tasks in categories. 
@@ -126,7 +118,6 @@ function summaryTasks() {
         countProgressTasks();
     }
 }
-
 
 // Count tasks
 function countProgressTasks() {
@@ -152,7 +143,6 @@ function countProgressTasks() {
     doneBox.innerHTML = `${countDone}`;
 }
 
-
 /**
  * Filter tasks with prio "high" and get the next due date. 
  */
@@ -165,7 +155,6 @@ function filterCardsPrioHigh() {
     };
     sortCardsPrioHigh();
 }
-
 
 /**
  * Format and show the next due date.
@@ -187,6 +176,3 @@ function sortCardsPrioHigh() {
         }
     }
 }
-
-
-

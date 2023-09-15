@@ -6,9 +6,7 @@ let currentUser;
 
 let rememberMe;
 
-
 loadcurrentUser();
-
 
 /**
  * Checks the login credentials against stored contacts.
@@ -21,36 +19,29 @@ function checkLogIn() {
     let passwordInput = document.getElementById('passwordInput');
     let isLoggedIn = false; // Variable to track if the login check was successful
     let rememberMeImg = document.getElementById('rememberMe');
-
     if(rememberMeImg.classList.contains('checkBox')) {
         localStorage.setItem('rememberMe', 1);
     }
-
     for (let i = 0; i < Contacts.length; i++) {
         let email = Contacts[i].email;
         let password = Contacts[i].password;
-
         if (emailInput.value === email && passwordInput.value === password) {
             isLoggedIn = true;
-
             currentUser = i;
             localStorage.setItem('currentUser', currentUser);
             window.location.href = 'summary.html';
             break; // Exit the loop since no further checking is needed
         }
     }
-
     if (!isLoggedIn) { 
         passwordAlert.textContent = "Wrong password Ups! Try again";
         passwordInput.parentElement.classList.add('redInput');
-
         setTimeout(() => { // Clear the error message and remove the red highlight after 3 seconds
             passwordAlert.textContent = "";
             passwordInput.parentElement.classList.remove('redInput');
         }, 3000);
     }
 }
-
 
 /**
  * Loads the current user from local storage.
@@ -65,7 +56,6 @@ function loadcurrentUser() {
         rememberMe = parseInt(stordeRememberMe);
     }
 }
-
 
 /**
  * Logs in as a guest user and redirects to the summary page.

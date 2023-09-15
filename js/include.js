@@ -21,7 +21,6 @@ async function includeTemplates(a) {
     await dateValidation();
 }
 
-
 /**
  * Adding class to active menu item.
  */
@@ -34,7 +33,6 @@ function addClassActiveMenuItem() {
         }
     }
 }
-
 
 /**
  * Function to include html-templates
@@ -53,7 +51,6 @@ async function includeHTML() {
     }
 }
 
-
 /**
  * Show "my account - menu" in header
  */
@@ -70,7 +67,6 @@ function showMenu() {
     };
 }
 
-
 /**
  * Set minimum date
  */
@@ -80,7 +76,6 @@ function dateValidation() {
         dateInput.setAttribute("min", `${new Date().toISOString().split('T')[0]}`);
     }
 }
-
 
 /**
  * Hide header menus by default

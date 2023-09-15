@@ -39,7 +39,7 @@ function renderOpenCategoryInputMainContainer() {
     `
 }
 
-function renderSelectedCategory() {
+function renderSelectedCategory(element) {
     return `
     <h5>Category</h5>
     <div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">
@@ -66,7 +66,7 @@ function renderGenerateOpenAddContactMainContainerDiv() {
     <div class="contacts_list_add_task" id="addContact"></div>`
 }
 
-function renderGenerateUnselectedContact(j, element) {
+function renderGenerateUnselectedContact(firstTwoLetters, j, element) {
     return `
     <div class="add-task-contact" id="addTaskContact_${j}" onclick="selectedContact(${j})">
         <div class="frame_212">
@@ -84,7 +84,7 @@ function renderGenerateUnselectedContact(j, element) {
     </div>`
 }
 
-function RenderGenerateSelectedContact() {
+function RenderGenerateSelectedContact(firstTwoLetters, j ,element) {
     return `
     <div class="add-task-contact col_2A3647" id="addTaskContact_${j}" onclick="selectedContact(${j})">
         <div class="frame_212">
@@ -108,7 +108,7 @@ function RenderCloseDropdownContactHTML() {
         </input>`
 }
 
-function RenderAddedContactsNameTagsMain(p) {
+function RenderAddedContactsNameTagsMain(firstTwoLetters, p) {
     return `
     <div class="added-contact-name-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 120 120" fill="none">
@@ -144,7 +144,7 @@ function RenderAddSubtaskHTML() {
     </svg>`
 }
 
-function RenderSubtaskMainHTML() {
+function RenderSubtaskMainHTML(addedSubtaskNameInput) {
     return `<div class="boxes">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
         viewBox="0 0 18 17" fill="none">
