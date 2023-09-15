@@ -1,44 +1,3 @@
-let cards = [];
-
-let categories = [];
-
-let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E200BE'];
-
-let listTypes = [{
-    name: "ToDo",
-    amount: 0,
-    },
-    {
-    name: "InProgress",
-    amount: 0,
-    },
-    {
-    name: "Awaitingfeedback",
-    amount: 0,
-    },
-    {
-    name: "Done",
-    amount: 0,
-    }
-];
-
-let currentListType = "";
-
-let currentDraggedElement;
-
-/**
- * svg graphics which shows arrows for mobile view to move cards to other status
- */
-let svgArrowRight = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-<rect width="16" height="16" rx="10" ry="10" fill="#D3D3D3" />
-<path d="M2 8L12 8M12 8L8 4M12 8L8 12" stroke="#696969" stroke-width="2" />
-</svg>`;
-let svgArrowLeft = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-<rect width="16" height="16" rx="10" ry="10" fill="#D3D3D3" />
-<path d="M14 8L4 8M4 8L8 4M4 8L8 12" stroke="#696969" stroke-width="2" />
-</svg>
-`;
-
 /**
  * Render all cards in board by loading from remote storage
  */
@@ -108,32 +67,6 @@ function renderBoardCardsDone(i) {
 }
 
 /**
- * HTML temnplate for render functions
- * @param {number} i 
- * @returns html content
- */
-function renderBoardTemplate(i) {
-    return `<div class="cardBoard" draggable="true" id="card${i}" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
-    <div class="cardBoardInside">
-        <div class="cardHeadMain">
-        <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-        <div class="svgImage"><div class="svgMinus90Degree" id="svgToLeft${i}" onclick="listTypeToLeft(${i})">${svgArrowLeft}</div><div class="svgPlus90Degree" id="svgToRight${i}" onclick="listTypeToRight(${i})">${svgArrowRight}</div></div>
-        </div>
-        <div class="cardBoardInsideTitleAndDescrption">
-            <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
-            <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
-        </div>
-        <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
-        <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
-        </div>
-        <div class="cardBoardInsideUserAndPrio">
-        <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
-        </div>
-    </div>
-</div>`;
-}
-
-/**
  * collection of other functions which are needed when render cards in board
  * @param {number} i - index of the Cards array
  */
@@ -179,8 +112,7 @@ function renderProgressBar(i) {
 function renderAssignedUserInBoard(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
         document.getElementById(`InsideUser${i}`).innerHTML += `
-            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>
-            `;
+            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
 
@@ -194,12 +126,10 @@ function renderAssignedUserFullName(i) {
         if (currentUser < Contacts.length) {
             if (cards[i]['assignedUserFullName'][j] == Contacts[currentUserNumber]['name']) {
                 document.getElementById(`InsideUserFullName${i}`).innerHTML += `
-            <div class="label-name">${cards[i]['assignedUserFullName'][j]} (You)</div>
-            `;
+            <div class="label-name">${cards[i]['assignedUserFullName'][j]} (You)</div>`;
             } else {
                 document.getElementById(`InsideUserFullName${i}`).innerHTML += `
-            <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>
-            `;
+            <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>`;
             }
         } else {
             document.getElementById(`InsideUserFullName${i}`).innerHTML += `
@@ -217,7 +147,6 @@ function renderAssignedUserFullName(i) {
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
-            // return `${Contacts[k]['color']}`;
             return `${nameTagsColors[k]}`;
         } else { }
     }
@@ -269,7 +198,6 @@ function openAddTask(i) {
         document.getElementById('CardContainer').style = "display:block;";
         document.getElementById('overlay').classList.remove('d-none');
         main();
-        // renderAddTask();
     }
 }
 
@@ -277,9 +205,6 @@ function openAddTask(i) {
  * render addTask overlay by loading template
  */
 function renderAddTask() {
-    //     document.getElementById('CardContainer').innerHTML = `
-    //     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
-    //     `;
     includeTemplates();
 }
 
@@ -294,7 +219,6 @@ function closeOverlay() {
         overlayClose.classList.remove('overlay-close');
     }, 0);
     document.getElementById('CardContainer').style = "display:none;";
-    // document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
     renderBoard();
@@ -352,7 +276,6 @@ function openCard(i, event) {
     renderCategoriesAndUser(i);
 }
 
-
 /**
  * Render Categorie and user details
  */
@@ -363,7 +286,6 @@ function renderCategoriesAndUser(i) {
     renderSubtasksInBoardDetail(i);
     prioButtonStyle(i);
 }
-
 
 /**
  * render background color for category in detailed card view
@@ -386,8 +308,7 @@ function renderBackgroundColorCategoryDetail(i) {
 function renderAssignedUserInBoardDetail(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
         document.getElementById(`InsideUserDetail${i}`).innerHTML += `
-            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>
-            `;
+            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
 
@@ -399,8 +320,7 @@ function renderSubtasksInBoardDetail(i) {
     if (cards[i]['subtasks'].length > 0) {
         for (let j = 0; j < cards[i]['subtasks'].length; j++) {
             document.getElementById(`cardDetailSubTasks${i}`).innerHTML += `
-                <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${i}${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i},${j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
-                `;
+                <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${i}${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i},${j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>`;
         }
     } else {
         subHead = document.getElementById(`SubtaskHeader${i}`);
@@ -499,7 +419,6 @@ function prioButtonStyle(i) {
     if (cards[i]['prio'] == "Urgent") {
         prioBtnDetail.classList.add('prio-high-btn');
         prioBtnDetailImg.src = "assets/img/addtask/prio-high-w.svg";
-
     } else
         if (cards[i]['prio'] == "Medium" || cards[i]['prio'] == "Mid") {
             prioBtnDetail.classList.add('prio-med-btn');
@@ -540,43 +459,6 @@ function editCard(i) {
     loadActiveStatePrio(i);
     loadSubtasksEditform(i);
     loadAssignedUserEditForm(i);
-}
-
-/**
- * Render the current prio state of card
- */
-function renderPrioState(i) {
-    return `
-    <div class="addTaskPrios" id="prioButtons2">
-                                    <button class="SubTaskPrios2 red" id="prioSelect0" onclick="addActiveState2(${i},0)">Urgent<img
-                                            src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
-                                            src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 yellow" id="prioSelect1" onclick="addActiveState2(${i},1)">Medium<img
-                                        src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
-                                        src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 green" id="prioSelect2" onclick="addActiveState2(${i},2)">Low<img
-                                        src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
-                                        src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
-                                </div>`;
-}
-
-/**
- * Render sub task mask
- */
-function renderSubTaskMask(i) {
-    return `
-    <div class="subtask" id="subtask_main2">
-        <h5>Subtasks</h5>
-        <div id="addNewSubtask2" class="subtask-input">
-            <p>Add new subtask</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput2(${i})">
-                <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </div>
-        <div id="subtasklist"></div>
-        <div class="checkboxes" id="added_subtasks_main">
-        </div>
-    </div>`;
 }
 
 /**
@@ -623,14 +505,7 @@ function saveEditedSubtask(i, b) {
 function openSubtaskInput2(i) {
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
     addSubtaskContainer.innerHTML = "";
-    addSubtaskContainer.innerHTML += `
-        <input type="text" placeholder="New subtask" id="added_subtask">
-        <button class="close-category-input-btn" onclick="cancelSubtaskInput2()">${smallXSVG}</button>
-        <svg height="40" width="3">
-            <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
-        </svg>
-        <button class="add-category-btn" onclick="addSubtask2(${i})">${checkedSmallSVG}</button>
-        `;
+    addSubtaskContainer.innerHTML += openSubtaskInput2HTML(i);
 }
 
 /**
@@ -647,10 +522,7 @@ function cancelEditedSubtask(i, b) {
  */
 function cancelSubtaskInput2() {
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
-    addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput2(${i})">
-        <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
+    addSubtaskContainer.innerHTML = cancelSubtaskInput2HTML();
 }
 
 /**
@@ -661,11 +533,8 @@ function addSubtask2(i) {
     let subtaskMain = document.getElementById('subtasklist');
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
     let addedSubtask = document.getElementById('added_subtask').value;
-    addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput2(${i})">
-        <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
-    subtaskMain.innerHTML += `   <div class="boxes" id="boxes${b}">• ${addedSubtask}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`
+    addSubtaskContainer.innerHTML = addSubtask2HTML();
+    subtaskMain.innerHTML += `<div class="boxes" id="boxes${b}">• ${addedSubtask}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`
     cards[i]['subtasks'].push({ nameSub: addedSubtask, status: "unchecked" });
     addedSubtasks.push(addedSubtask);
     window.subtasks = addedSubtasks;
@@ -722,7 +591,6 @@ function addActiveState2(i, j) {
     prioValueForSaving(i, j);
 }
 
-let prioValue;
 /**
  * set prio depending on value 
  * @param {*} i - index of the Cards array
@@ -749,8 +617,6 @@ async function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
     cards[i]['description'] = document.getElementById('editCardDescription').value;
     cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
-
-    //cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
     await saveCardsToStorage();
     openCard(i);
@@ -785,20 +651,6 @@ async function moveTo(listType) {
     renderBoard();
 }
 
-//Save and load cards
-// function saveCardsToStorage() {
-//     let cardsAsString = JSON.stringify(cards);
-//     localStorage.setItem('cards', cardsAsString);
-// }
-
-// function getCardsFromStorage() {
-
-//     let cardsAsString = localStorage.getItem('cards');
-//     if (cardsAsString) {
-//         cards = JSON.parse(cardsAsString);
-//     }
-// }
-
 /**
  * open dropdown menu for contacts in board card
  * @param {number} i - index of the Cards array
@@ -821,7 +673,6 @@ function openDropdownContact2(i) {
     openTransparentOverlay();
 }
 
-
 /**
  * Render assigned user in dropdown and add class
  */
@@ -836,7 +687,6 @@ function showAssignedUserOfCard(i) {
         };
     }
 }
-
 
 /**
  * add user to card
@@ -855,7 +705,6 @@ function addUser(i, p) {
     };
 }
 
-
 /**
  * Assigned user dropdown: Add selected user to card.
  */
@@ -865,7 +714,6 @@ function addNewUser(i, p, addClassAssignedUser, changeCheckboxImg) {
     addClassAssignedUser.classList.add('added');
     changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
 }
-
 
 /**
  * Assigned user dropdown: Remove selected user from card.
@@ -919,12 +767,7 @@ function loadAssignedUserToForm(i, p) {
     let findContactFormatted = findContact.toLowerCase();
     let addContactDropdown = document.getElementById('selectuser');
     if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
-        addContactDropdown.innerHTML += `
-        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}">
-        <div class="label-card" style="background-color:${nameTagsColors[p]}">${Contacts[p]['firstLetters']}</div>
-        <div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div>
-        <img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}">
-        <img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`;
+        addContactDropdown.innerHTML += loadAssignedUserToFormHTML(i, p);
     }
 }
 
