@@ -37,19 +37,19 @@
                             <div class="inputSearchBoardContainer">
                                 <input id="inputSearchBoard" onkeyup="filterCards()" autocomplete="off" type="search" placeholder="Find Task">
                                 <div class="searchImage" style="display: flex;">
-                                    <img src="/assets/img/board/searchSeparator.png" alt="">
-                                    <img src="/assets/img/board/search.png" alt="">
+                                    <img src="./assets/img/board/searchSeparator.png" alt="">
+                                    <img src="./assets/img/board/search.png" alt="">
                                 </div>
                             </div>
                             <button onclick="openAddTask('ToDo')" class="addTaskButton">Add Task<img
-                                    src="/assets/img/board/plusWhite.png" alt=""></button>
+                                    src="./assets/img/board/plusWhite.png" alt=""></button>
                         </div>
                     </div>
                     <div class="categoryBoardAll">
                         <div class="categoryBoardHead">
                             <div class="categoryBoardSub"><span>To Do</span>
                                 <div onclick="openAddTask('ToDo')" class="headBoardRightImage"><img
-                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                                        src="./assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardToDo')" ondragover="allowDrop(event)" id="cardBoardToDo">
                                 <div class="cardBoard">
@@ -60,12 +60,12 @@
                                             <div class="cardBoardInsideDescription">Beschreibung des jeweiligen Tasks
                                             </div>
                                         </div>
-                                        <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                                        <div class="cardBoardInsideProgress"><img src="./assets/img/board/loadingBar.png"
                                                 alt="">
                                             <p>1/2 Done</p>
                                         </div>
                                         <div class="cardBoardInsideUserAndPrio">
-                                            <p>Users</p><img src="/assets/img/board/PrioHigh.png" alt="">
+                                            <p>Users</p><img src="./assets/img/board/PrioHigh.png" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                         <div class="categoryBoardHead">
                             <div class="categoryBoardSub"><span>In Progress</span>
                                 <div onclick="openAddTask('InProgress')" class="headBoardRightImage"><img
-                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                                        src="./assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardInProgress')" ondragover="allowDrop(event)" id="cardBoardInProgress">
                                 <div class="cardBoard">Test Card</div>
@@ -84,7 +84,7 @@
                             <div class="categoryBoardSub"><span>Awaiting
                                     Feedback</span>
                                 <div onclick="openAddTask('Awaitingfeedback')" class="headBoardRightImage"><img
-                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                                        src="./assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll cardBoardAllAWFB drag-area" ondrop="moveTo('cardBoardAwaitingfeedback')" ondragover="allowDrop(event)" id="cardBoardAwaitingfeedback">
                                 <div class="cardBoard">Test Card</div>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="categoryBoardHead">
                             <div class="categoryBoardSub"><span>Done</span>
-                                <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png"
+                                <div class="headBoardRightImageBlind"><img src="./assets/img/board/plusDark.png"
                                         alt="add">
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
             <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
                 <div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>
             </div>
-            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="./assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
                 <div class="carddetailinside">
                 <div class="cardBoardInsideCat" id="cardDetailCat"></div>
                 <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
@@ -126,7 +126,7 @@
             </div>
             </div>
 
-            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="./assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
                 <div class="overlay-transparent" style="display:none;" id="overlaytransparent" onclick="closeTransparentOverlay()"></div>
                 <div class="carddetailinside">
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
