@@ -7,19 +7,19 @@ let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E
 let listTypes = [{
     name: "ToDo",
     amount: 0,
-},
-{
+    },
+    {
     name: "InProgress",
     amount: 0,
-},
-{
+    },
+    {
     name: "Awaitingfeedback",
     amount: 0,
-},
-{
+    },
+    {
     name: "Done",
     amount: 0,
-}
+    }
 ];
 
 let currentListType = "";
@@ -356,7 +356,7 @@ function openCard(i, event) {
 /**
  * Render Categorie and user details
  */
-function renderCategoriesAndUser(i){
+function renderCategoriesAndUser(i) {
     renderBackgroundColorCategoryDetail(i);
     renderAssignedUserInBoardDetail(i);
     renderAssignedUserFullName(i);
@@ -563,7 +563,7 @@ function renderPrioState(i) {
 /**
  * Render sub task mask
  */
-function renderSubTaskMask(i){
+function renderSubTaskMask(i) {
     return `
     <div class="subtask" id="subtask_main2">
         <h5>Subtasks</h5>

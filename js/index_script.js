@@ -1,5 +1,4 @@
 /////////////////////// Function to initialize the page ///////////////////////////////////
-
 /**
  * Initializes the application by starting the animation and retrieving contacts from storage.
  */
@@ -8,9 +7,7 @@ function init() {
     getContactsFromStorage();
 }
 
-
 //////////////////////// Function to start the animation //////////////////////////////////
-
 /**
  * Initiates the animation sequence. Changes the logo source for small screens,
  * fades out the start background, and removes it from the DOM after the animation.
@@ -22,14 +19,10 @@ function startAnimation() {
     setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
-
         setTimeout(() => { logo.src = "../img/joinlogo.png"; }, 80)
-
         logo.classList.add('imgLogo');
-
         // Fades out the startBackground div gradually
         background.style.backgroundColor = "rgba(246, 247, 248, 0%)";
-
         // Remove the image from the DOM after the animation
         setTimeout(() => {
             if (background && background.parentNode) {
@@ -40,21 +33,23 @@ function startAnimation() {
     }, 500); // Wait for 0.5 seconds before starting the animation
 }
 
-
 //////////////////////////////////// Function to toggle password visibility ////////////////////////////////
-
 /**
  * Toggles the visibility of the password input field based on the provided index.
- * 
  * @param {number} i - The index to identify which password input field to toggle (1 or 2).
  */
-function togglePasswordVisibility(i) {
-    let passwordInput = document.getElementById('passwordInput');
-    let passwordImage = document.getElementById('passwordImage');
-    let passwordInput2 = document.getElementById('passwordInput2');
-    let passwordImage2 = document.getElementById('passwordImage2');
-
-    if (passwordInput && i === 1) {
+function togglePasswordVisibility() {
+    updatePasswordVisibility(1);
+    updatePasswordVisibility(2);
+}
+/**
+ * @param {number} passwordId - The id of the password field.
+ * @param {number} i - The index to identify which password input field to toggle (1 or 2).
+ */
+function updatePasswordVisibility(passwordId, i) {
+    let passwordInput = document.getElementById('passwordInput' + passwordId);
+    let passwordImage = document.getElementById('passwordImage' + passwordId);
+    if (passwordInput && i === passwordId && !passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
         if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text'; // Show password
@@ -65,22 +60,9 @@ function togglePasswordVisibility(i) {
             }
         }
     }
-    if (passwordInput2 && i === 2) {
-        if (!passwordImage2.src.includes('/assets/img/logInSignUp/lock.svg')) {
-            if (passwordInput2.type === 'password') {
-                passwordInput2.type = 'text'; // Show password
-                passwordImage2.src = './assets/img/logInSignUp/eye.svg';
-            } else {
-                passwordInput2.type = 'password'; // Hide password
-                passwordImage2.src = './assets/img/logInSignUp/hiddeneye.svg';
-            }
-        }
-    }
 }
 
-
 /////////////////////////////////// Function to add event listeners for the password field ////////////////////////
-
 /**
  * Sets up event listeners for password input fields.
  * @function
@@ -88,7 +70,6 @@ function togglePasswordVisibility(i) {
  */
 function setupPasswordInputEventListeners() {
     const passwordInputs = document.querySelectorAll('.passwordInput');
-
     /**
      * Updates the password image source based on input and focus.
      * @param {HTMLInputElement} passwordInput - The password input field.
@@ -102,43 +83,34 @@ function setupPasswordInputEventListeners() {
             passwordImage.src = './assets/img/logInSignUp/lock.svg';
         }
     }
-
     passwordInputs.forEach((passwordInput) => {
         const passwordImage = passwordInput.nextElementSibling;
-
         passwordInput.addEventListener('focus', function () {
             updatePasswordImageSrc(passwordInput, passwordImage);
         });
-
         passwordInput.addEventListener('input', function () {
             updatePasswordImageSrc(passwordInput, passwordImage);
         });
-
         passwordInput.addEventListener('focusout', function () {
             updatePasswordImageSrc(passwordInput, passwordImage);
         });
     });
 }
 
-
 ////////////////////// Function to add event listeners after the DOM has loaded ////////////////////////
 function setupEventListenersAfterDOMLoaded() {
     setupPasswordInputEventListeners();
 }
 
-
 ///////////////////// Function called when the "Remember Me" button is clicked /////////////////////////
-
 /**
  * Function called when the "Remember Me" button is clicked
  */
 function checkBox() {
     let rememberMeImg = document.getElementById('rememberMe');
-
-    if(rememberMeImg.classList.contains('checkBox')) {
+    if (rememberMeImg.classList.contains('checkBox')) {
         localStorage.setItem('rememberMe', 0);
     }
-
     if (rememberMeImg.classList.contains('uncheckBox')) {
         rememberMeImg.classList.remove('uncheckBox');
         rememberMeImg.classList.add('checkBox');
@@ -153,23 +125,19 @@ async function checkRememberMe() {
     let rememberMeCheckBox = document.getElementById('rememberMe');
     let emailInput = document.getElementById('emailInput');
     let passwordInput = document.getElementById('passwordInput');
-
-    if(rememberMe === 1 && currentUser !== 1000) {
+    if (rememberMe === 1 && currentUser !== 1000) {
         rememberMeCheckBox.click();
         emailInput.value = Contacts[currentUser].email;
         passwordInput.value = Contacts[currentUser].password;
     }
 }
 
-
 /////////////////////////////////////////// Log In //////////////////////////////////////////////////
-
 /**
  * Function to render the LogIn form
  */
 function renderLogIn() {
     let contentbox = document.getElementById('contentbox');
-
     contentbox.innerHTML = returnLogInHTML();
     setupEventListenersAfterDOMLoaded();
     checkRememberMe();
@@ -177,24 +145,17 @@ function renderLogIn() {
     document.getElementById('footer').classList.remove('d-none');
 }
 
-
-
-
-
 /////////////////////////////////////////// Sign Up //////////////////////////////////////////////////
-
 /**
  * Function to render the SignUp form
  */
 function renderSignUp() {
     let contentbox = document.getElementById('contentbox');
-
     contentbox.innerHTML = returnSignUpHTML();
     setupEventListenersAfterDOMLoaded();
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('banner').innerHTML = 'You Signed Up succeccfully';
 }
-
 
 /**
  * Function to handle SignUp form submission
@@ -204,13 +165,11 @@ async function signUpForm() {
     let emailInput = document.getElementById('emailInput');
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
-
     if (checkSamePasswort(password1, password2) && await checkEmail(emailInput.value) && checkTwoWordsforSignUp(nameInput)) {
         let nameArray = nameInput.value.split(' ');
         let firstName = nameArray[0];
         let lastName = nameArray[1];
         let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
-
         let user = {
             "firstName": firstName,
             "lastName": lastName,
@@ -261,7 +220,6 @@ function checkTwoWordsforSignUp(nameInput) {
     }
 }
 
-
 /**
  * Checks if an email already exists in the Contacts list.
  * @param {string} email - The email to check.
@@ -281,7 +239,6 @@ async function checkEmail(email) { // check if an email exists
     return true;
 }
 
-
 /**
  * Checks if two password inputs have the same value.
  * @param {HTMLInputElement} password1 - The first password input element.
@@ -289,7 +246,6 @@ async function checkEmail(email) { // check if an email exists
  * @returns {boolean} Returns true if the passwords match, otherwise false.
  */
 function checkSamePasswort(password1, password2) {
-
     if (password1.value !== password2.value) {
         passwordAlert.textContent = "Die Passwörter stimmen nicht überein!";
         password2.parentElement.classList.add('redInput');
@@ -303,13 +259,11 @@ function checkSamePasswort(password1, password2) {
 }
 
 /////////////////////////////////////////// Forgot Password //////////////////////////////////////////////////
-
 /**
  * Function to render the Forgot Password form
  */
 function renderForgotPW() {
     let contentbox = document.getElementById('contentbox');
-
     contentbox.innerHTML = returnForgotPWHTML();
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
@@ -322,7 +276,6 @@ function renderForgotPW() {
 function checkResetpassword() {
     let emailInput = document.getElementById('emailInput');
     let emailFound = false;
-
     for (let i = 0; i < Contacts.length; i++) {
         let userEmail = Contacts[i].email;
         if (emailInput.value === userEmail) {
@@ -336,7 +289,6 @@ function checkResetpassword() {
         emailInput.parentElement.classList.add('redInput');
         setTimeout(() => { emailAlert.textContent = ""; emailInput.parentElement.classList.remove('redInput'); }, 3000);
     }
-
 }
 
 /**
@@ -345,7 +297,6 @@ function checkResetpassword() {
  */
 function renderResetPassword(i) {
     let contentbox = document.getElementById('contentbox');
-
     contentbox.innerHTML = returnResetPasswordHTML(i);
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
@@ -361,7 +312,6 @@ async function setNewPassword(i) {
     let user = Contacts[i];
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
-
     if (checkSamePasswort(password1, password2)) {
         user.password = password1.value;
         show();
@@ -375,7 +325,6 @@ async function setNewPassword(i) {
  */
 function show() {
     let banner = document.getElementById('banner');
-
     banner.classList.add("visible");
     setTimeout(() => {
         banner.classList.remove("visible");
@@ -388,9 +337,7 @@ function show() {
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('DOMContentLoaded', handleMaxWidthChange);
 
-
 /////////////////////////////////////// moveElementbyMedia max-width 510px for SignUp Button ///////////////////////////
-
 /**
  * Moves the element with ID 'headerRight' to a new parent element.
  * @param {HTMLElement} newParent - The new parent element.
@@ -404,7 +351,6 @@ function moveElementToNewPosition(newParent) {
     }
 }
 
-
 /**
  * Handles the change in maximum width of the window.
  * If the window width is less than 510, moves the element with ID 'headerRight' before the footer.
@@ -413,7 +359,6 @@ function moveElementToNewPosition(newParent) {
 function handleMaxWidthChange() {
     let moveBack = document.getElementById('header');
     let elementToMove = document.getElementById('headerRight');
-
     if (window.innerWidth < 510) {
         moveElementToNewPosition(document.getElementById('footer'));
     } else {
@@ -424,160 +369,3 @@ function handleMaxWidthChange() {
 }
 
 window.addEventListener('resize', handleMaxWidthChange);
-
-
-/////////////////////////////////////////////// return HTML //////////////////////////////////////////////////
-
-/**
- * Returns HTML code for a login form.
- * @returns {string} The HTML code for the login form.
- */
-function returnLogInHTML() {
-    return /* html */ `
-        <form onsubmit="checkLogIn(); return false;" class="content">
-            <div class="headingContainer">
-                <h1>Log in</h1>
-            </div>
-            <div class="blueSeperator"></div>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                    <div class="rememberMeForgetBox mobilView">
-                        <div class="checkBoxLogIn">
-                            <div onclick="checkBox()" id="rememberMe" class="uncheckBox"></div>
-                            <span>Remember me</span>
-                        </div>
-                        <a id="fmp" href="#" onclick="renderForgotPW()"> Forget my password</a>
-                    </div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button type="onsubmit" class="logInButton">Log in</button>
-                <button type="button" onclick="guestLogIn()" class="logInButton guestLogIn">Guest Log in</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML code for a sign-up form.
- * @returns {string} The HTML code for the sign-up form.
- */
-function returnSignUpHTML() {
-    return /* html */ `
-        <form onsubmit="signUpForm(); return false;" class="content responsivSignUp">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>Sign Up</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="nameInput" class="" type="text" placeholder="Vor- und Nachname">
-                        <img src="./assets/img/logInSignUp/person.svg" alt="">
-                    </div>
-                    <div id="nameAlert"></div>
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div id="emailAlert"></div>
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div id="freeAlert"></div>
-                    <div class="inputField">
-                        <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                    <div class="rememberMeForgetBox">
-                        <div class="checkBoxSignIn">
-                            <input type="checkbox" id="rememberMe" class="uncheckBox" required>
-                            <span>I accept the </span>
-                        </div>
-                        <a id="fmp" href="#"> Privacy policy</a>
-                    </div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="logInButton">Sign up</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML content for the 'Forgot Password' form.
- * @returns {string} The HTML content.
- */
-function returnForgotPWHTML() {
-    return /* html */ `
-        <form onsubmit="checkResetpassword(); return false;" class="content forgotPW">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>I forgot my password</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <h2>Don't worry! We will send you an email with the instructions to reset your password.</h2>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div id="emailAlert"></div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="sendEmailButton">Send me the email</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML content for the 'Reset Password' form.
- * @returns {string} The HTML content.
- */
-function returnResetPasswordHTML(i) {
-    return /* html */ `
-        <form onsubmit="setNewPassword('${i}'); return false;" class="content forgotPW">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>Reset your password</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <h2>Change your account password</h2>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div class="inputField">
-                        <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="continueButton">Continue</button>
-            </div>
-        </form>
-    `;
-}
