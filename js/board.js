@@ -62,7 +62,7 @@ function renderBoardCardsDone(i) {
         listTypes[3]['amount']++;
         document.getElementById('cardBoardDone').innerHTML +=
             renderBoardTemplate(i);
-    } else { }
+    }
     renderBoardFunctionsTemplate(i);
 }
 
@@ -87,7 +87,7 @@ function renderBackgroundColorCategory(i) {
     for (let k = 0; k < categories.length; k++) {
         if (cat == categories[k]['name']) {
             catClass.style['background-color'] = categories[k]['color'];
-        } else { }
+        }
     };
 }
 
@@ -148,7 +148,7 @@ function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
             return `${nameTagsColors[k]}`;
-        } else { }
+        }
     }
 }
 
@@ -170,7 +170,7 @@ function renderNoCardsInCardBoard() {
             document.getElementById(`cardBoard${listTypes[k]['name']}`).innerHTML += `
             <div class="NoCardsInBoardPlaceholder">No tasks in ${listTypes[k]['name']}</div>
             `;
-        } else { }
+        }
     }
 }
 
@@ -297,7 +297,7 @@ function renderBackgroundColorCategoryDetail(i) {
     for (let k = 0; k < categories.length; k++) {
         if (cat == categories[k]['name']) {
             catClassDet.style['background-color'] = categories[k]['color'];
-        } else { }
+        }
     };
 }
 
@@ -410,7 +410,7 @@ async function ChangeCheckboxSubtasks(i, j) {
 function prioButtonStyle(i) {
     let prioBtnDetail = document.getElementById('priobtndetail');
     let prioBtnDetailImg = document.getElementById('prioImg');
-    for (y = 0; y < cards.length; y++) {
+    for (let y = 0; y < cards.length; y++) {
         prioBtnDetail.classList.remove('prio-high-btn');
         prioBtnDetail.classList.remove('prio-med-btn');
         prioBtnDetail.classList.remove('prio-low-btn');
@@ -468,7 +468,7 @@ function editCard(i) {
 function loadSubtasksEditform(i) {
     let subtaskMain = document.getElementById('subtasklist');
     subtaskMain.innerHTML = '';
-    for (b = 0; b < cards[i]['subtasks'].length; b++) {
+    for (let b = 0; b < cards[i]['subtasks'].length; b++) {
         subtaskMain.innerHTML += `<div class="boxes" id="boxes${b}">• ${cards[i]['subtasks'][b].nameSub}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`;
     }
 }
@@ -581,7 +581,7 @@ function addActiveState2(i, j) {
         btnsTip[j].classList.remove('active-state');
     }
     else {
-        for (f = 0; f < btnsTip.length; f++) {
+        for (let f = 0; f < btnsTip.length; f++) {
             btnsTip[f].classList.remove('active-state');
         };
         btnsTip[j].classList.add('active-state');
@@ -677,7 +677,7 @@ function openDropdownContact2(i) {
  * Render assigned user in dropdown and add class
  */
 function showAssignedUserOfCard(i) {
-    for (p = 0; p < Contacts.length; p++) {
+    for (let p = 0; p < Contacts.length; p++) {
         loadAssignedUserToForm(i, p);
         if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
             let addClassAssignedUser = document.getElementById(`addusercard${p}`);
