@@ -103,15 +103,12 @@ async function showContactDetails(x) {
 
 /**
  * This function is called from the showContactDetails function. It generates the HTML code that renders and displays the detailed contact card.
- * 
  * @param {number} x This parameter is the variable that is used to address certain elements and keys that correspond to the object in the array Contacts with the same index.
  *  
  * @param {string} element This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                         The value is the corresponding object from the array Contacts.
- * 
  * @param {string} contactCardContainer  This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                                       It is used to address a certain html element with the corresponding id.
- * 
  * @param {string} firstTwoLetters This parameter is the variable that is defined and used in the other function that is calling this function.
  *                                 It is used to generate the first letter of the name and surname of the person in the corresponding object in the array Contacts,
  *                                 for generating the name tag.
