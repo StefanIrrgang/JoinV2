@@ -1,34 +1,6 @@
 const STORAGE_TOKEN = '22IHGHSO6RK69ZWRK7OJ83P8M7HBHL2ZBOQ17FRQ';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
-//Save and load contacts
-// function saveContactsToStorage(){
-//     let contactsAsString = JSON.stringify(Contacts);
-//     localStorage.setItem('contacts', contactsAsString);
-// }
-
-// function getContactsFromStorage(){
-
-//     let contactsAsString = localStorage.getItem('contacts');
-//     if(contactsAsString){
-//     Contacts = JSON.parse(contactsAsString);
-// }
-// }
-
-//Save and load cards
-// function saveCardsToStorage() {
-//     let cardsAsString = JSON.stringify(cards);
-//     localStorage.setItem('cards', cardsAsString);
-// }
-
-// function getCardsFromStorage() {
-
-//     let cardsAsString = localStorage.getItem('cards');
-//     if (cardsAsString) {
-//         cards = JSON.parse(cardsAsString);
-//     }
-// }
-
 //Save and load contacts in remoteStorage
 async function saveContactsToStorage() { // Name muss dann angepasst werden
     let key = 'contacts';
