@@ -15,21 +15,16 @@ function getFirstLetters() {
 /**
  * This is a help function used to make the function renderContactsList cleaner and more readable. 
  * It is used to generate the HTML code that displays the contacts in the contact list that go after the letter tab separator as well as to generate that same letter tab separator. 
- * 
  * @param {string} element This parameter is the variable that is defined in a for loop and used in the other function that is calling this function. 
  *                          The value is the corresponding object from the array Contacts.
- * 
  * @param {string} firstLetter This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              The value is the first letter of the name from the person in the corresponding object from the array Contacts.
  *                              It is used to generate the letter tab separator.
- * 
  * @param {*} firstTwoLetters This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              The value is first letter of the name and surname from the person in the corresponding object from the array Contacts.
  *                              It is used to generate the name tag of the person in the contact list.  
- * 
  * @param {*} contactsList  This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              It is used to address a certain html element with the corresponding id.
- * 
  * @param {*} i This parameter is the index that corresponds to the sequence number in a for loop that runs in the function that is calling this function.
  *              It is used to generate certain elements from the same index in the array Contacts.
  */
@@ -40,17 +35,13 @@ function renderContactWithLetterSeparator(element, firstLetter, firstTwoLetters,
 /**
  * This is a help function used to make the function renderContactsList cleaner and more readable. 
  * It is used to generate the HTML code that displays the contacts in the contact list that go right after the first contact in a alphabetically sorted contact group. 
- * 
  * @param {string} element This parameter is the variable that is defined in a for loop and used in the other function that is calling this function. 
  *                          The value is the corresponding object from the array Contacts.
- * 
  * @param {*} firstTwoLetters This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              The value is first letter of the name and surname from the person in the corresponding object from the array Contacts.
  *                              It is used to generate the name tag of the person in the contact list.  
- * 
  * @param {*} contactsList  This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              It is used to address a certain html element with the corresponding id.
- * 
  * @param {*} i This parameter is the index that corresponds to the sequence number in a for loop that runs in the function that is calling this function.
  *              It is used to generate certain elements from the same index in the array Contacts.
  */

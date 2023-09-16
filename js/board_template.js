@@ -21,7 +21,6 @@ let listTypes = [{
 let currentListType = "";
 let currentDraggedElement;
 let prioValue;
-
 /**
  * svg graphics which shows arrows for mobile view to move cards to other status
  */
@@ -34,7 +33,6 @@ let svgArrowLeft = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/sv
 <path d="M14 8L4 8M4 8L8 4M4 8L8 12" stroke="#696969" stroke-width="2" />
 </svg>
 `;
-
 /**
  * HTML temnplate for render functions
  * @param {number} i 
@@ -60,7 +58,6 @@ function renderBoardTemplate(i) {
     </div>
 </div>`;
 }
-
 /**
  * Render the current prio state of card
  */
@@ -78,7 +75,6 @@ function renderPrioState(i) {
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
 }
-
 /**
  * Render sub task mask
  */
@@ -97,7 +93,6 @@ function renderSubTaskMask(i) {
         </div>
     </div>`;
 }
-
 function openSubtaskInput2HTML(i) {
     return `
     <input type="text" placeholder="New subtask" id="added_subtask">
@@ -131,7 +126,6 @@ function loadAssignedUserToFormHTML(i, p) {
     <img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}">
     <img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`
 }
-
 /**
  * render assigned user icon with initials in card
  * @param {number} i - index of the Cards array
@@ -142,7 +136,6 @@ function renderAssignedUserInBoard(i) {
             <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
-
 /**
  * render assigned user full name in card detailed view
  * @param {number} i - index of the Cards array
@@ -164,7 +157,6 @@ function renderAssignedUserFullName(i) {
         }
     }
 }
-
 /**
  * render 'no cards in board' placeholder for all columns
  */
@@ -177,7 +169,6 @@ function renderNoCardsInCardBoard() {
         }
     }
 }
-
 /**
  * clear all columns in board
  */
@@ -187,7 +178,6 @@ function clearBoardCards() {
     document.getElementById('cardBoardAwaitingfeedback').innerHTML = '';
     document.getElementById('cardBoardDone').innerHTML = '';
 }
-
 /**
  * open addTask overlay in board
  */
@@ -204,7 +194,6 @@ function openAddTask(i) {
         main();
     }
 }
-
 /**
  * render assigned user in card detailed view
  * @param {number} i - index of the Cards array
@@ -215,7 +204,6 @@ function renderAssignedUserInBoardDetail(i) {
             <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
-
 /**
  * render subtasks in detailed view of card
  * @param {number} i - index of the Cards array
@@ -233,7 +221,6 @@ function renderSubtasksInBoardDetail(i) {
         subHead.classList.add('d-none');
     }
 }
-
 /**
  * edit card function in card detailed view
  * @param {number} i - index of the Cards array
@@ -254,7 +241,6 @@ function editCard(i) {
     loadSubtasksEditform(i);
     loadAssignedUserEditForm(i);
 }
-
 /**
  * load form to edit subtasks in detailed view of card
  * @param {number} i - index of the Cards array
@@ -269,7 +255,6 @@ function loadSubtasksEditform(i) {
         <img src="assets/img/board/trash-icon.svg"></a></div></div>`;
     }
 }
-
 /**
  * edit subtasks in form 
  * @param {number} i - index of the Cards array
@@ -284,7 +269,6 @@ function editLoadedSubtasks(i, b) {
     let editSubtaskInputValue = document.getElementById(`inputEditTask${b}`);
     editSubtaskInputValue.value = `${cards[i]['subtasks'][b].nameSub}`;
 }
-
 /**
  * open subtask input form
  * @param {number} i - index of subtask in Cards JSON
@@ -294,7 +278,6 @@ function openSubtaskInput2(i) {
     addSubtaskContainer.innerHTML = "";
     addSubtaskContainer.innerHTML += openSubtaskInput2HTML(i);
 }
-
 /**
  * add new subtask to card in edit card view
  * @param {number} i - index of the Cards array
@@ -312,7 +295,6 @@ function addSubtask2(i) {
     addedSubtasks.push(addedSubtask);
     window.subtasks = addedSubtasks;
 }
-
 /**
  * open card in detailed view in board
  * @param {number} i - index of the Cards array
@@ -339,7 +321,6 @@ function openCard(i, event) {
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
     renderCategoriesAndUser(i);
 }
-
 /**
  * Render assigned user in edit card form.
  * @param {number} i - index of the Cards array
@@ -352,7 +333,6 @@ function loadAssignedUserEditForm(i) {
             <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
-
 /**
  * Render all ToDo cards in board
  */
@@ -371,7 +351,6 @@ async function renderBoardCards() {
         };
     } renderNoCardsInCardBoard();
 }
-
 /**
  * Render all InProgress cards in board
  * @param {number} i - index of the Cards array
@@ -384,7 +363,6 @@ function renderBoardCardsInProgress(i) {
         renderBoardFunctionsTemplate(i);
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
-
 /**
  * Render all AwaitingFeedback cards in board
  * @param {number} i - index of the Cards array
@@ -397,14 +375,12 @@ function renderBoardCardsAwaitingFeedback(i) {
         renderBoardFunctionsTemplate(i);
     } else { renderBoardCardsDone(i) };
 }
-
 /**
  * render addTask overlay by loading template
  */
 function renderAddTask() {
     includeTemplates();
 }
-
 /**
  * Render all Done cards in board
  * @param {number} i - index of the Cards array
