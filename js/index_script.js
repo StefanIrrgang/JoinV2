@@ -14,12 +14,12 @@ function init() {
  */
 function startAnimation() {
     if (window.innerWidth < 510) {
-        logo.src = "../img/joinlogomobil.png";
+        logo.src = "./img/joinlogomobil.png";
     }
     setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
-        setTimeout(() => { logo.src = "../img/joinlogo.png"; }, 80)
+        setTimeout(() => { logo.src = "./img/joinlogo.png"; }, 80)
         logo.classList.add('imgLogo');
         // Fades out the startBackground div gradually
         background.style.backgroundColor = "rgba(246, 247, 248, 0%)";

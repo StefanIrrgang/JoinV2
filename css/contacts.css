@@ -40,14 +40,14 @@ body {
 }
 
 .frame-97::-webkit-scrollbar-thumb {
-    background: url('/assets/img/contacts/scrollbar_thumb.svg');
+    background: url('../assets/img/contacts/scrollbar_thumb.svg');
     background-repeat: no-repeat;
     background-position-x: center;
 }
 
 .frame-97::-webkit-scrollbar-button:vertical:decrement {
 
-    background: url('/assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
+    background: url('../assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
@@ -55,7 +55,7 @@ body {
 
 .frame-97::-webkit-scrollbar-button:vertical:increment {
 
-    background: url('/assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
+    background: url('../assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;

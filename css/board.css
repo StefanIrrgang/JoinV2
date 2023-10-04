@@ -871,13 +871,13 @@ div#editCardSubtasks button.add-category-btn {
 
 
 div#selectbox input {
-    background: url(/assets/img/board/arrow_drop_down.svg);
+    background: url(../assets/img/board/arrow_drop_down.svg);
     background-repeat: no-repeat;
     background-position: right;
 }
 
 .selectbox.active input {
-    background: url(/assets/img/board/arrow_drop_down_close.svg) !important;
+    background: url(../assets/img/board/arrow_drop_down_close.svg) !important;
     background-repeat: no-repeat !important;
     background-position: right !important;
 }
